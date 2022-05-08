@@ -10,6 +10,7 @@ import {
   Services,
   Benefits,
   Hero,
+  Socials,
 } from './components';
 
 const IndexView = (): JSX.Element => {
@@ -18,7 +19,8 @@ const IndexView = (): JSX.Element => {
     <Box sx={{ overflowX: 'hidden' }}>
       <Main bgcolor={'background.paper'}>
         <Hero />
-        <Container>
+        <Socials />
+        {/*<Container>
           <Services />
         </Container>
         <Box
@@ -60,7 +62,7 @@ const IndexView = (): JSX.Element => {
         </Box>
         <Container>
           <GetStarted />
-        </Container>
+          </Container>*/}
       </Main>
     </Box>
   );

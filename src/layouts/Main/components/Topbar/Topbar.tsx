@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { alpha, useTheme } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import FirepotLogo from 'svg/illustrations/FirepotLogo';
+import Typography from '@mui/material/Typography';
 
 import { NavItem } from './components';
 
@@ -45,24 +47,25 @@ const Topbar = ({
     >
       <Box
         display={'flex'}
-        component="a"
-        href="/"
+        //component="a"
+        //href="/"
         title="theFront"
-        width={{ xs: 100, md: 120 }}
+        width={{ xs: 100, md: 300 }}
+        //sx={{backgroundColor: '#ff0000'}}
       >
-        <Box
-          component={'img'}
-          src={
-            mode === 'light' && !colorInvert
-              ? 'https://assets.maccarianagency.com/the-front/logos/logo.svg'
-              : 'https://assets.maccarianagency.com/the-front/logos/logo-negative.svg'
-          }
-          height={1}
-          width={1}
-        />
+        <FirepotLogo />
+        <Typography
+              variant="h4"
+              color="text.primary"
+              sx={{
+                fontWeight: 700,
+              }}
+            >
+              &nbsp;&nbsp;Firepot Finance
+              </Typography>
       </Box>
       <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
-        <Box>
+        {/*<Box>
           <NavItem
             title={'Landings'}
             id={'landing-pages'}
@@ -109,7 +112,7 @@ const Topbar = ({
             items={portfolioPages}
             colorInvert={colorInvert}
           />
-        </Box>
+            </Box>*/}
         <Box marginLeft={4}>
           <Button
             variant="contained"
@@ -119,7 +122,7 @@ const Topbar = ({
             href="https://mui.com/store/items/the-front-landing-page/"
             size="large"
           >
-            Buy now
+            Connect Wallet
           </Button>
         </Box>
       </Box>

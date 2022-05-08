@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { alpha, useTheme } from '@mui/material/styles';
+import HeroBG from 'svg/illustrations/HeroBG';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import Container from 'components/Container';
 
@@ -83,15 +85,15 @@ const Hero = (): JSX.Element => {
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
+  // convert component to string useable in data-uri
+  const svgString = encodeURIComponent(renderToStaticMarkup(<HeroBG />));
 
   return (
     <Box
       sx={{
-        backgroundImage: `linear-gradient(to bottom, ${alpha(
-          theme.palette.background.paper,
-          0,
-        )}, ${alpha(theme.palette.alternate.main, 1)} 100%)`,
-        backgroundRepeat: 'repeat-x',
+        backgroundImage: `url("data:image/svg+xml,${svgString}")`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPositionX: 'right',
         position: 'relative',
       }}
     >
@@ -106,42 +108,23 @@ const Hero = (): JSX.Element => {
                 fontWeight: 700,
               }}
             >
-              Turn your ideas
-              <br />
-              into{' '}
-              <Typography
-                color={'primary'}
-                component={'span'}
-                variant={'inherit'}
-                sx={{
-                  background: `linear-gradient(180deg, transparent 82%, ${alpha(
-                    theme.palette.secondary.main,
-                    0.3,
-                  )} 0%)`,
-                }}
-              >
-                <Typed
-                  strings={['startup.', 'future.', 'success.']}
-                  typeSpeed={80}
-                  loop={true}
-                />
-              </Typography>
+              FirepotSwap 🍲
             </Typography>
             <Typography
-              variant="h6"
-              component="p"
-              color="text.secondary"
+              variant="h4"
+              color="text.primary"
               sx={{ fontWeight: 400 }}
             >
-              theFront will make your product look modern and professional while
-              saving you precious time.
+              The very first Dex & DeFi platform on the Ambrosus blockchain.
             </Typography>
             <Box
               display="flex"
               flexDirection={{ xs: 'column', sm: 'row' }}
               alignItems={{ xs: 'stretched', sm: 'flex-start' }}
-              marginTop={4}
+              marginTop={5}
+              marginBottom={2}
             >
+                
               <Button
                 component={'a'}
                 variant="contained"
@@ -150,7 +133,7 @@ const Hero = (): JSX.Element => {
                 fullWidth={isMd ? false : true}
                 href={'/home'}
               >
-                View pages
+                Connect Wallet
               </Button>
               <Box
                 marginTop={{ xs: 2, sm: 0 }}
@@ -165,53 +148,19 @@ const Hero = (): JSX.Element => {
                   size="large"
                   fullWidth={isMd ? false : true}
                 >
-                  Documentation
+                  Connect Email
                 </Button>
               </Box>
             </Box>
+            <Typography
+                component="p"
+                color="text.primary"
+                sx={{ fontWeight: 400 }}
+              >
+                Connect your wallet or email to receive an upcoming early access utility NFT.
+              </Typography>
           </Box>
         </Container>
-        <Box
-          sx={{
-            transform: 'rotate(-20deg)',
-            display: { xs: 'none', sm: 'block' },
-          }}
-        >
-          <Box
-            display={'flex'}
-            width={'50rem'}
-            left={'50%'}
-            top={0}
-            position={'absolute'}
-            sx={{ transform: 'translate3d(20%, -50%, 0)' }}
-          >
-            {images.map((item, i) => (
-              <Box key={i} marginTop={{ sm: -(i * 16) }} marginX={1}>
-                {item.group.map((g, j) => (
-                  <Box
-                    key={j}
-                    padding={1}
-                    bgcolor={'background.paper'}
-                    borderRadius={2}
-                    boxShadow={3}
-                    marginTop={2}
-                  >
-                    <Box
-                      component={LazyLoadImage}
-                      effect="blur"
-                      src={
-                        theme.palette.mode === 'dark' ? g.coverDark : g.cover
-                      }
-                      height={1}
-                      width={1}
-                      maxWidth={320}
-                    />
-                  </Box>
-                ))}
-              </Box>
-            ))}
-          </Box>
-        </Box>
       </Box>
       <Box
         component={'svg'}
@@ -226,7 +175,7 @@ const Hero = (): JSX.Element => {
         }}
       >
         <path
-          fill={theme.palette.background.paper}
+          fill={theme.palette.background.level1}
           d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"
         ></path>
       </Box>

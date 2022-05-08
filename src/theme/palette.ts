@@ -2,32 +2,32 @@ import { PaletteMode } from '@mui/material';
 
 export const light = {
   alternate: {
-    main: '#f7faff',
-    dark: '#edf1f7',
+    main: '#070C2D',
+    dark: '#000000',
   },
   cardShadow: 'rgba(23, 70, 161, .11)',
   mode: 'light' as PaletteMode,
   primary: {
-    main: '#377dff',
-    light: '#467de3',
-    dark: '#2f6ad9',
+    main: '#FF014A',
+    light: '#FF4177',
+    dark: '#BF0138',
     contrastText: '#fff',
   },
   secondary: {
-    light: '#ffb74d',
-    main: '#f9b934',
-    dark: '#FF9800',
+    light: '#FFCE47',
+    main: '#FFBE09',
+    dark: '#BF8F07',
     contrastText: 'rgba(0, 0, 0, 0.87)',
   },
   text: {
-    primary: '#1e2022',
-    secondary: '#677788',
+    primary: '#ffffff',
+    secondary: '#000000',
   },
   divider: 'rgba(0, 0, 0, 0.12)',
   background: {
-    paper: '#ffffff',
-    default: '#ffffff',
-    level2: '#f5f5f5',
+    paper: '#09103C',
+    default: '#09103C',
+    level2: '#070C2D',
     level1: '#ffffff',
   },
 };
