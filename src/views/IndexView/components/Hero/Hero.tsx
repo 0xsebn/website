@@ -104,7 +104,7 @@ const Hero = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if (!isConnected) {
+    if (window.ethereum && !isConnected) {
       const address = window.ethereum.selectedAddress;
       if (address !== null) {
         setWalletAddy(address);
