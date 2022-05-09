@@ -94,7 +94,7 @@ const Hero = (): JSX.Element => {
         });
         console.log(accounts, "accounts");
         setWalletAddy(accounts[0]);
-        await WalletDataService.addWalletAddress({ address: accounts[0] });
+        await WalletDataService.addWalletAddress(accounts[0]);
       } catch (error) {
         console.log("Error connecting", error);
       }
@@ -165,9 +165,10 @@ const Hero = (): JSX.Element => {
                 fullWidth={isMd ? false : true}
               >
                 {isConnected
-                  ? `${walletAddy.substring(0, 5)}…${walletAddy.substring(walletAddy.length - 4)}`
-                  : 'Connect Wallet'
-                }
+                  ? `${walletAddy.substring(0, 5)}…${walletAddy.substring(
+                      walletAddy.length - 4
+                    )}`
+                  : "Connect Wallet"}
               </Button>
               {/*<Box
                 marginTop={{ xs: 2, sm: 0 }}
@@ -191,11 +192,9 @@ const Hero = (): JSX.Element => {
               color={isConnected ? "primary.main" : "text.primary"}
               sx={{ fontWeight: 400 }}
             >
-              {
-                isConnected
-                  ? "Successfully registered for upcoming early access utility NFT!"
-                  : "Connect your wallet to receive an upcoming early access utility NFT"
-              }
+              {isConnected
+                ? "Successfully registered for upcoming early access utility NFT!"
+                : "Connect your wallet to receive an upcoming early access utility NFT"}
             </Typography>
           </Box>
         </Container>
