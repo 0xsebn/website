@@ -21,15 +21,7 @@ const Footer = (): JSX.Element => {
           width={1}
           flexDirection={{ xs: 'column', sm: 'row' }}
         >
-          <Box
-            display={'flex'}
-            component="a"
-            href="/"
-            title="theFront"
-            width={80}
-          >
-            <FirepotLogo />
-          </Box>
+          <FirepotLogo />
         </Box>
       </Grid>
       <Grid item xs={12}>
