@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Typed from "react-typed";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Box from "@mui/material/Box";
+import WalletDataService from "../../../../services/wallet.services";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -92,6 +93,7 @@ const Hero = (): JSX.Element => {
         });
         console.log(accounts, "accounts");
         setWalletAddy(accounts[0]);
+        await WalletDataService.addWalletAddress({ address: accounts[0] });
       } catch (error) {
         console.log("Error connecting", error);
       }
