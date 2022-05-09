@@ -113,7 +113,7 @@ const Topbar = ({
             colorInvert={colorInvert}
           />
             </Box>*/}
-        <Box marginLeft={4}>
+        {/*<Box marginLeft={4}>
           <Button
             variant="contained"
             color="primary"
@@ -124,7 +124,7 @@ const Topbar = ({
           >
             Connect Wallet
           </Button>
-        </Box>
+          </Box>*/}
       </Box>
       <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
         <Button

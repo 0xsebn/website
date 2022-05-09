@@ -82,6 +82,7 @@ const images = [
 
 const Hero = (): JSX.Element => {
   const [walletAddy, setWalletAddy] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
   async function requestAccount() {
     console.log("Requesting Account");
     //Check if metamask extension is installed
@@ -101,6 +102,17 @@ const Hero = (): JSX.Element => {
       console.log("Metamask Not Detected");
     }
   }
+
+  useEffect(() => {
+    if (!isConnected) {
+      const address = window.ethereum.selectedAddress;
+      if (address !== null) {
+        setWalletAddy(address);
+        setIsConnected(true);
+      }
+    }
+  }, [walletAddy, isConnected]);
+
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
@@ -149,12 +161,15 @@ const Hero = (): JSX.Element => {
                 variant="contained"
                 color="primary"
                 size="large"
-                onClick={requestAccount}
+                onClick={isConnected ? undefined : requestAccount}
                 fullWidth={isMd ? false : true}
               >
-                Connect Wallet
+                {isConnected
+                  ? `${walletAddy.substring(0, 5)}…${walletAddy.substring(walletAddy.length - 4)}`
+                  : 'Connect Wallet'
+                }
               </Button>
-              <Box
+              {/*<Box
                 marginTop={{ xs: 2, sm: 0 }}
                 marginLeft={{ sm: 2 }}
                 width={{ xs: "100%", md: "auto" }}
@@ -169,15 +184,18 @@ const Hero = (): JSX.Element => {
                 >
                   Connect Email
                 </Button>
-              </Box>
+            </Box>*/}
             </Box>
             <Typography
               component="p"
-              color="text.primary"
+              color={isConnected ? "primary.main" : "text.primary"}
               sx={{ fontWeight: 400 }}
             >
-              Connect your wallet or email to receive an upcoming early access
-              utility NFT.
+              {
+                isConnected
+                  ? "Successfully registered for upcoming early access utility NFT!"
+                  : "Connect your wallet to receive an upcoming early access utility NFT"
+              }
             </Typography>
           </Box>
         </Container>
