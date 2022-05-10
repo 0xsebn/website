@@ -1,12 +1,12 @@
-import React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import { alpha, useTheme } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
-import FirepotLogo from 'svg/illustrations/FirepotLogo';
-import Typography from '@mui/material/Typography';
+import React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { alpha, useTheme } from "@mui/material/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import FirepotLogo from "svg/illustrations/FirepotLogo";
+import Typography from "@mui/material/Typography";
 
-import { NavItem } from './components';
+import { NavItem } from "./components";
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/ban-types
@@ -40,13 +40,13 @@ const Topbar = ({
 
   return (
     <Box
-      display={'flex'}
-      justifyContent={'space-between'}
-      alignItems={'center'}
+      display={"flex"}
+      justifyContent={"space-between"}
+      alignItems={"center"}
       width={1}
     >
       <Box
-        display={'flex'}
+        display={"flex"}
         //component="a"
         //href="/"
         title="theFront"
@@ -55,16 +55,16 @@ const Topbar = ({
       >
         <FirepotLogo />
         <Typography
-              variant="h4"
-              color="text.primary"
-              sx={{
-                fontWeight: 700,
-              }}
-            >
-              &nbsp;&nbsp;Firepot Finance
-              </Typography>
+          variant="h4"
+          color="text.primary"
+          sx={{
+            fontWeight: 700,
+          }}
+        >
+          &nbsp;&nbsp;Firepot Finance
+        </Typography>
       </Box>
-      <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
+      <Box sx={{ display: { xs: "none", md: "flex" } }} alignItems={"center"}>
         {/*<Box>
           <NavItem
             title={'Landings'}
@@ -126,21 +126,22 @@ const Topbar = ({
           </Button>
           </Box>*/}
       </Box>
-      <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
+      {/* Menu Drop down */}
+      {/* <Box sx={{ display: { xs: "flex", md: "none" } }} alignItems={"center"}>
         <Button
           onClick={() => onSidebarOpen()}
           aria-label="Menu"
-          variant={'outlined'}
+          variant={"outlined"}
           sx={{
             borderRadius: 2,
-            minWidth: 'auto',
+            minWidth: "auto",
             padding: 1,
             borderColor: alpha(theme.palette.divider, 0.2),
           }}
         >
           <MenuIcon />
         </Button>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
