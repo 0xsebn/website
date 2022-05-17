@@ -50,8 +50,8 @@ const Topbar = ({
         //component="a"
         //href="/"
         title="theFront"
-        width={{ xs: 100, md: 300 }}
-        //sx={{backgroundColor: '#ff0000'}}
+        width="300"
+        
       >
         <FirepotLogo />
         <Typography

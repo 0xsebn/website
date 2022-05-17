@@ -7,9 +7,13 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { alpha, useTheme } from "@mui/material/styles";
-import HeroBG from "svg/illustrations/HeroBG";
+//import HeroBGDark from "svg/illustrations/HeroBGDark";
+//import HeroBGLight from "svg/illustrations/HeroBGLight";
+import HeroBGDark from 'svg/raw/Backgrounds/HeroBGDark.svg';
+import HeroBGLight from 'svg/raw/Backgrounds/HeroBGLight.svg';
 import { renderToStaticMarkup } from "react-dom/server";
 import Container from "components/Container";
+import { Alert, AlertTitle, Stack } from "@mui/material";
 
 const images = [
   {
@@ -102,6 +106,11 @@ const Hero = (): JSX.Element => {
       console.log("Metamask Not Detected");
     }
   }
+  const truncateAddy = (address: string) => {
+    return `${address.substring(0, 5)}…${address.substring(
+      address.length - 4
+    )}`
+  }
 
   useEffect(() => {
     if (window.ethereum && !isConnected) {
@@ -117,19 +126,25 @@ const Hero = (): JSX.Element => {
   const isMd = useMediaQuery(theme.breakpoints.up("md"), {
     defaultMatches: true,
   });
+  const isXs = useMediaQuery(theme.breakpoints.up("xs"), {
+    defaultMatches: true,
+  });
   // convert component to string useable in data-uri
-  const svgString = encodeURIComponent(renderToStaticMarkup(<HeroBG />));
+  //const svgHeroBGDark = encodeURIComponent(renderToStaticMarkup(<HeroBGDark />));
+  //const svgHeroBGLight = encodeURIComponent(renderToStaticMarkup(<HeroBGLight />));
 
   return (
     <Box
       sx={{
-        backgroundImage: `url("data:image/svg+xml,${svgString}")`,
+        backgroundImage: `url(${isConnected ? HeroBGLight : HeroBGDark})`,
         backgroundRepeat: "no-repeat",
         backgroundPositionX: "right",
+        backgroundPositionY: "bottom",
+        backgroundSize: { xs: "100%", sm: "90%", md: "70%" },
         position: "relative",
       }}
     >
-      <Box paddingY={{ xs: 0, sm: "4rem", md: "8rem" }}>
+      <Box paddingY={{ xs: "3rem", sm: "4rem", md: "8rem" }}>
         <Container>
           <Box maxWidth={{ xs: 1, sm: "50%" }}>
             <Typography
@@ -147,7 +162,7 @@ const Hero = (): JSX.Element => {
               color="text.primary"
               sx={{ fontWeight: 400 }}
             >
-              The very first Dex & DeFi platform on the Ambrosus blockchain.
+              The very first Dex & DeFi platform on the Ambrosus blockchain
             </Typography>
             <Box
               display="flex"
@@ -156,20 +171,32 @@ const Hero = (): JSX.Element => {
               marginTop={5}
               marginBottom={2}
             >
-              <Button
-                component={"a"}
-                variant="contained"
+              {
+                isConnected
+                  ? 
+                  <Stack spacing={2}>
+                    <Alert severity="success">
+                  <AlertTitle><strong>Wallet Connected</strong></AlertTitle>
+                  <strong>{truncateAddy(walletAddy)}</strong>
+                </Alert>
+                <Alert variant="outlined" severity="success" sx={{ color: "text.primary" }}>
+                <strong>Successfully registered for upcoming early access utility NFT</strong>
+              </Alert>
+                  </Stack>
+                  
+              : <Button
+                sx={{ fontWeight: 600 }}
+                variant={isConnected ? "outlined" : "contained"}
                 color="primary"
                 size="large"
                 onClick={isConnected ? undefined : requestAccount}
                 fullWidth={isMd ? false : true}
               >
                 {isConnected
-                  ? `${walletAddy.substring(0, 5)}…${walletAddy.substring(
-                      walletAddy.length - 4
-                    )}`
+                  ? `Connected (${truncateAddy(walletAddy)})`
                   : "Connect Wallet"}
               </Button>
+              }
               {/*<Box
                 marginTop={{ xs: 2, sm: 0 }}
                 marginLeft={{ sm: 2 }}
@@ -187,15 +214,6 @@ const Hero = (): JSX.Element => {
                 </Button>
             </Box>*/}
             </Box>
-            <Typography
-              component="p"
-              color={isConnected ? "primary.main" : "text.primary"}
-              sx={{ fontWeight: 400 }}
-            >
-              {isConnected
-                ? "Successfully registered for upcoming early access utility NFT!"
-                : "Connect your wallet to receive an upcoming early access utility NFT"}
-            </Typography>
           </Box>
         </Container>
       </Box>
