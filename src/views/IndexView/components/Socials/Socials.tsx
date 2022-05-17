@@ -2,10 +2,10 @@ import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import DiscordLogo from 'svg/raw/DiscordLogo.svg';
-import TwitterLogo from 'svg/raw/TwitterLogo.svg';
-import TelegramLogo from 'svg/raw/TelegramLogo.svg';
-import RedditLogo from 'svg/raw/RedditLogo.svg';
+import DiscordLogo from 'svg/raw/SocialLogos/DiscordLogo.svg';
+import TwitterLogo from 'svg/raw/SocialLogos/TwitterLogo.svg';
+import TelegramLogo from 'svg/raw/SocialLogos/TelegramLogo.svg';
+import RedditLogo from 'svg/raw/SocialLogos/RedditLogo.svg';
 
 import Container from 'components/Container';
 
@@ -44,7 +44,7 @@ const Socials = (): JSX.Element => {
             Join Our Community
           </Typography>
           <Typography color={'text.secondary'} align={'center'} variant={'h6'}>
-            Get the lastest updates and tell us what you would like to see.
+            Get the lastest updates and tell us what you would like to see
           </Typography>
         </Box>
         <Box display="flex" flexWrap="wrap" justifyContent={'center'}>
