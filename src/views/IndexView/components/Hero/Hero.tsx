@@ -149,7 +149,7 @@ const Hero = (): JSX.Element => {
           <Box maxWidth={{ xs: 1, sm: "50%" }}>
             <Typography
               variant="h2"
-              color="text.primary"
+              color="primary.main"
               gutterBottom
               sx={{
                 fontWeight: 700,
@@ -230,7 +230,7 @@ const Hero = (): JSX.Element => {
         }}
       >
         <path
-          fill={theme.palette.background.level1}
+          fill={theme.palette.primary.main}
           d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"
         ></path>
       </Box>
