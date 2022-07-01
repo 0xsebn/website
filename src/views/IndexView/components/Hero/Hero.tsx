@@ -187,7 +187,7 @@ const Hero = (): JSX.Element => {
               : <Button
                 sx={{ fontWeight: 600 }}
                 variant={isConnected ? "outlined" : "contained"}
-                color="primary"
+                color="secondary"
                 size="large"
                 onClick={isConnected ? undefined : requestAccount}
                 fullWidth={isMd ? false : true}
