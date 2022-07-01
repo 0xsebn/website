@@ -32,7 +32,7 @@ const Socials = (): JSX.Element => {
       <Box 
       //paddingY={{ xs: 0, sm: '4rem', md: '8rem' }}
       paddingY={4}
-      sx={{ backgroundColor: '#ffffff' }}>
+      sx={{ backgroundColor: 'primary.main' }}>
         <Box marginBottom={4}>
           <Typography
            color={'text.secondary'}
