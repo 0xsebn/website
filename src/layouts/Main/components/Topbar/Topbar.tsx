@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { alpha, useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
-import FirepotLogo from "svg/illustrations/FirepotLogo";
+import FirepotLogoFull from "svg/raw/FirepotLogoFull.png";
 import Typography from "@mui/material/Typography";
 
 import { NavItem } from "./components";
@@ -53,16 +53,16 @@ const Topbar = ({
         width="300"
         
       >
-        <FirepotLogo />
-        <Typography
-          variant="h4"
-          color="text.primary"
-          sx={{
-            fontWeight: 700,
-          }}
-        >
-          &nbsp;&nbsp;Firepot Finance
-        </Typography>
+      <Box
+        component="img"
+        sx={{
+          //height: 44,
+          //width: 44,
+          maxHeight: { xs: 32, md: 44 },
+        }}
+        alt="Firepot Finance"
+        src={FirepotLogoFull}
+      />
       </Box>
       <Box sx={{ display: { xs: "none", md: "flex" } }} alignItems={"center"}>
         {/*<Box>

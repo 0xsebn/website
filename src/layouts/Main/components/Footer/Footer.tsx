@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
-import FirepotLogo from 'svg/illustrations/FirepotLogo';
+import FirepotLogoIcon from 'svg/raw/FirepotLogoIcon.png';
 
 const Footer = (): JSX.Element => {
   const theme = useTheme();
@@ -21,7 +21,15 @@ const Footer = (): JSX.Element => {
           width={1}
           flexDirection={{ xs: 'column', sm: 'row' }}
         >
-          <FirepotLogo />
+          <Box
+        component="img"
+        sx={{
+          height: 44,
+          //width: 44,
+        }}
+        alt="Firepot Finance"
+        src={FirepotLogoIcon}
+      />
         </Box>
       </Grid>
       <Grid item xs={12}>
